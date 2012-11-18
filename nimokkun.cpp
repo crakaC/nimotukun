@@ -21,6 +21,7 @@ const char* STAGE[X]={
 
 char key;
 int px,py;
+
 int main(){
   init();
   while(true){
@@ -33,6 +34,7 @@ int main(){
     }
   }
 }
+
 void init(){
   for(int y = 0; y < Y; y++){
     for(int x = 0; x < X; x++){
@@ -57,7 +59,9 @@ void init(){
       }
     }
   }
+  draw();
 }
+
 void draw(){
   for(int y = 0; y < Y; y++){
     for(int x = 0; x < X; x++){
@@ -128,7 +132,7 @@ bool movable(int x, int y, int dx, int dy){
     return true;
   }
   //blockを動かせる
-  else if(blocks[y][x] && field[y+dy][x+dx]>=1){
+  else if(blocks[y][x] && blocks[y+dy][x+dx] == false && field[y+dy][x+dx]>=1){
     blocks[y][x] = false;
     blocks[y+dy][x+dx] = true;
     return true;
